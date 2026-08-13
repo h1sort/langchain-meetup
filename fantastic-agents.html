@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Fantastic Agents and Where to Find Them — a field guide to agents in production.">
+  <title>Fantastic Agents and Where to Find Them</title>
+  <style>
+    :root { --ink:#101817; --night:#101817; --paper:#f6f3eb; --paper-deep:#ece7da; --mist:#cbd1ca; --line:rgba(247,245,239,.23); --source:#277c73; --key:#b95332; --case:#6559a7; --danger:#a93d38; --ochre:#c99637; --muted:#97a39d; --pad:clamp(1.5rem,5vw,5.6rem); --display:Georgia, 'Times New Roman', serif; --mono:'SFMono-Regular',Consolas,'Liberation Mono',monospace; }
+    * { box-sizing:border-box } html,body { margin:0; height:100%; background:var(--night); color:var(--paper); font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    html { scroll-snap-type:y mandatory; scroll-behavior:smooth; overflow:hidden; } body { overflow:hidden; }
+    .progress { position:fixed; z-index:50; inset:0 auto auto 0; height:4px; width:0; background:linear-gradient(90deg,var(--source),var(--key),var(--case)); transition:width .25s ease; }
+    .deck { height:100%; overflow-y:auto; scroll-snap-type:y mandatory; overscroll-behavior:none; }
+    .slide { --accent:var(--source); width:100%; height:100vh; height:100dvh; min-height:100vh; min-height:100dvh; scroll-snap-align:start; display:grid; grid-template-rows:auto minmax(0,1fr) auto; position:relative; overflow:hidden; padding:1.7rem var(--pad) 1.25rem; isolation:isolate; background:var(--night); }
+    .slide::before { content:""; position:absolute; z-index:-2; inset:0; opacity:.65; background-image:linear-gradient(rgba(244,239,227,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(244,239,227,.035) 1px,transparent 1px); background-size:36px 36px; mask-image:radial-gradient(ellipse at 60% 42%,black,transparent 72%); }
+    .slide::after { content:""; position:absolute; z-index:-1; width:55vmax;height:55vmax;right:-25vmax;top:-25vmax;border-radius:50%;background:radial-gradient(circle,var(--accent),transparent 65%);filter:blur(80px);opacity:.07; }
+    .slide.light { background:var(--paper); color:var(--ink); } .slide.light::before { background-image:linear-gradient(rgba(16,33,30,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(16,33,30,.06) 1px,transparent 1px); } .slide.light::after{opacity:.12}
+    .slide.key { --accent:var(--key) }.slide.case { --accent:var(--case) }.slide.danger { --accent:var(--danger) }
+    .topline,.bottomline { display:flex; align-items:center; justify-content:space-between; gap:1rem; font-family:var(--mono); font-size:clamp(.64rem,.8vw,.8rem); letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+    .spec-dot { width:.56rem;height:.56rem;border-radius:50%;display:inline-block;background:var(--accent);box-shadow:0 0 18px var(--accent);margin-right:.45rem; }
+    .slide.light .topline,.slide.light .bottomline { color:#57645d; }
+    .main { min-height:0; display:flex; flex-direction:column; justify-content:center; padding:clamp(.8rem,2vh,2rem) 0; }
+    h1,h2,h3,p { margin:0 } h1,h2 { font-family:var(--display); font-weight:400; letter-spacing:-.045em; line-height:.94; } h1 { font-size:clamp(3.3rem,8.8vw,9.5rem); max-width:10ch; } h2 { font-size:clamp(2.25rem,5.1vw,5.9rem); max-width:15ch; } h3 { font-size:clamp(1rem,1.5vw,1.35rem); }
+    .eyebrow { color:var(--accent); font:700 clamp(.7rem,1vw,.92rem)/1.3 var(--mono); letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.2rem; }
+    .lede { color:var(--mist); font-size:clamp(1rem,1.8vw,1.55rem);line-height:1.45;max-width:52ch;margin-top:1.35rem; }.light .lede{color:#48564e}
+    .quote { border-left:2px solid var(--accent);padding:.2rem 0 .2rem 1.3rem; font-family:var(--display);font-size:clamp(1.5rem,3.2vw,3.4rem);line-height:1.07;max-width:25ch; }.citation{font: .74rem/1.4 var(--mono);color:var(--muted);margin-top:.85rem}
+    .hero-grid { display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:clamp(2rem,7vw,9rem); }.hero-grid h1{max-width:9ch}.hero-mark{min-height:48vh;display:grid;place-items:center;}
+    .stamp { border:1px solid color-mix(in srgb,var(--accent),transparent 22%);color:var(--accent);padding:.55rem .8rem;display:inline-block;font:700 .74rem var(--mono);letter-spacing:.1em;text-transform:uppercase;margin-top:1.5rem; }
+    .three { display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.75rem,2.4vw,2.5rem);margin-top:2.5rem; }.scenario { border-top:1px solid var(--line);padding-top:1rem; }.scenario b{display:block;color:var(--accent);font:700 .75rem var(--mono);letter-spacing:.12em;margin-bottom:.6rem}.scenario p{font:clamp(1rem,1.7vw,1.45rem)/1.2 var(--display)}.scenario small{display:block;color:var(--muted);margin-top:.8rem;font-size:.8rem}
+    .loop { margin-top:2.4rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;max-width:65rem; }.loop span{border:1px solid var(--line);border-radius:999px;padding:.55rem .85rem;font:700 .72rem var(--mono);letter-spacing:.07em;text-transform:uppercase}.loop b{color:var(--accent);font-size:1.3rem}.harness{color:var(--accent)!important;border-color:color-mix(in srgb,var(--accent),transparent 40%)!important}
+    .gradient { display:grid;grid-template-columns:repeat(3,1fr); gap:0;margin-top:2.3rem;max-width:80rem}.gradient article{border-top:3px solid var(--accent);padding:1.1rem 1rem 0 0;margin-right:1rem}.gradient article:nth-child(2){--accent:var(--key)}.gradient article:nth-child(3){--accent:var(--case)}.gradient b{font:700 .78rem var(--mono);letter-spacing:.15em;color:var(--accent)}.gradient p{font:clamp(1.2rem,2vw,1.9rem)/1.1 var(--display);margin-top:.55rem}.gradient small{color:var(--muted);display:block;margin-top:.55rem}
+    .creature { width:min(34vw,28rem);aspect-ratio:1;position:relative;color:var(--accent);filter:drop-shadow(0 22px 34px rgba(0,0,0,.35)); }.creature svg{width:100%;height:100%;overflow:visible}.creature-note{font:italic clamp(.85rem,1.2vw,1.05rem) var(--display);color:var(--mist);text-align:center;margin-top:.6rem}.placeholder{font:.65rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    .specimen { display:grid;grid-template-columns:.72fr 1fr;align-items:center;gap:clamp(1rem,5vw,6rem); }.species{font:italic clamp(1rem,1.4vw,1.3rem) var(--display);color:var(--accent);margin-top:.6rem}.facts{display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.35rem}.facts span{border:1px solid var(--line);padding:.43rem .6rem;font:.66rem var(--mono);text-transform:uppercase;letter-spacing:.08em}.command {font:clamp(1.3rem,2.5vw,2.3rem)/1.12 var(--display);margin-top:1.8rem;max-width:22ch}.command::before{content:'“';color:var(--accent)}.command::after{content:'”';color:var(--accent)}
+    .diagram { border:1px solid var(--line);background:rgba(5,15,13,.28);border-radius:.4rem;position:relative;min-height:45vh;padding:clamp(1rem,3vw,3rem); display:grid;place-items:center; }.light .diagram {background:rgba(255,255,255,.45);border-color:rgba(16,33,30,.15)}.diagram-caption{font:.7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);position:absolute;top:1rem;left:1rem}.diagram svg{width:100%;height:100%;max-height:46vh}.node{fill:var(--night);stroke:var(--accent);stroke-width:2}.light .node{fill:var(--paper);}.node-text{fill:var(--paper);font:600 13px ui-sans-serif,system-ui}.light .node-text{fill:var(--ink)}.edge{stroke:var(--mist);stroke-width:1.6;fill:none;marker-end:url(#arrow)}.proposal{stroke:var(--accent);stroke-dasharray:7 6}.boundary{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:6 5;opacity:.75}.svg-label{fill:var(--muted);font:11px var(--mono);letter-spacing:1px}.diagram .scribble{position:absolute;right:1.25rem;bottom:1rem;color:var(--accent);font:italic 1rem var(--display);transform:rotate(-4deg)}
+    .split {display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,6vw,8rem);align-items:center}.code{background:#091310;border:1px solid color-mix(in srgb,var(--accent),transparent 62%);padding:clamp(1rem,2vw,1.6rem);border-radius:.35rem;overflow:auto;color:#dce8dc;font:clamp(.7rem,1.1vw,.98rem)/1.55 var(--mono);white-space:pre}.code .accent{color:var(--accent)}.code .muted{color:#91a79b}.callouts{display:grid;gap:.75rem;margin-top:1.1rem}.callout{border-left:2px solid var(--accent);padding:.25rem 0 .25rem .8rem;color:var(--mist);font-size:clamp(.85rem,1.25vw,1rem)}
+    table {width:100%;border-collapse:collapse;font-size:clamp(.75rem,1.3vw,1rem)}th,td{padding:.65rem .7rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font:700 .68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}td:first-child{font-weight:650}.light th,.light td{border-color:rgba(16,33,30,.16)}.protocol{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1rem,5vw,5rem);align-items:start}.protocol .lede{margin-top:.5rem}
+    .tools{display:grid;gap:.85rem;margin-top:1.5rem}.tool{display:grid;grid-template-columns:1.35rem 1.2fr auto;align-items:center;gap:1rem;padding:.9rem 1rem;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:clamp(.82rem,1.3vw,1.05rem)}.tool i{width:.85rem;height:.85rem;background:var(--accent);border-radius:50%;display:block}.tool b{font-weight:500}.tool small{color:var(--muted)}
+    .mustmay{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.8rem}.mustmay article{border:1px solid var(--line);padding:1.4rem;min-height:13rem}.mustmay b{font:700 .72rem var(--mono);letter-spacing:.13em;color:var(--accent)}.mustmay ul{margin:1rem 0 0;padding:0;list-style:none}.mustmay li{padding:.4rem 0;border-bottom:1px solid var(--line)}
+    .matrix{display:grid;grid-template-columns:1fr repeat(3,1fr);gap:0;margin-top:1.5rem;max-width:100rem}.matrix > *{padding:.75rem;border-bottom:1px solid var(--line);font-size:clamp(.72rem,1.1vw,.95rem)}.matrix .head{font:700 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}.matrix .row{font-weight:700}.mini{height:2rem;width:2rem;display:inline-block;vertical-align:middle;margin-right:.3rem;color:var(--accent)}
+    .decision{display:grid;gap:.7rem;margin-top:1.7rem;max-width:68rem}.branch{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:.8rem}.branch q{font:clamp(1rem,1.7vw,1.45rem) var(--display)}.answer{color:var(--accent);font:700 .75rem var(--mono);letter-spacing:.1em;text-transform:uppercase}.stack{font:clamp(1.3rem,2.7vw,2.4rem)/1.5 var(--mono);border-left:2px solid var(--accent);padding-left:1.2rem;color:var(--mist)}
+    .closing {text-align:center;align-items:center}.closing h2{max-width:14ch}.closing .three{max-width:64rem;width:100%;text-align:left}.closing .scenario:nth-child(2) b{color:var(--key)}.closing .scenario:nth-child(3) b{color:var(--case)}.final-line{font:clamp(1.4rem,3vw,3rem)/1.08 var(--display);max-width:23ch;margin-top:3rem}.final-line em{color:var(--accent);font-style:normal}
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1)}.visible .reveal{opacity:1;transform:none}.visible .reveal:nth-child(2){transition-delay:.12s}.visible .reveal:nth-child(3){transition-delay:.24s}.visible .reveal:nth-child(4){transition-delay:.36s}.visible .reveal:nth-child(5){transition-delay:.48s}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+    @media (max-width:760px){.slide{height:auto;min-height:100vh;min-height:100dvh;overflow:visible;padding:1rem 1.2rem .8rem}.topline span:last-child{display:none}.hero-grid,.specimen,.split,.protocol{grid-template-columns:1fr;gap:1.2rem}.hero-mark{position:absolute;right:-1rem;bottom:4rem;opacity:.3;min-height:0}.creature{width:13rem}.three,.gradient{gap:.8rem}.scenario p{font-size:1rem}.diagram{min-height:34vh}.diagram svg{max-height:33vh}.mustmay{gap:.8rem}.matrix{overflow:auto}.matrix>*{min-width:8.4rem}.topline,.bottomline{font-size:.58rem}.tool{grid-template-columns:1rem 1fr}.tool small{display:none}.code{font-size:.66rem}.closing .three{grid-template-columns:1fr}.slide::before{background-size:24px 24px}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <main class="deck" id="deck" aria-label="Fantastic Agents presentation">
+
+    <section class="slide" data-slide="0" aria-label="Title">
+      <div class="topline"><span><i class="spec-dot"></i>Production field guide</span><span>30 min · synthetic examples</span></div>
+      <div class="main hero-grid">
+        <div class="reveal"><p class="eyebrow">Fantastic agents and where to find them</p><h1>Choose the animal.<br>Design the habitat.</h1><p class="lede">A practical field guide to building agents that can survive contact with production.</p><span class="stamp">Know · Do · Decide</span></div>
+        <div class="hero-mark reveal"><div><div class="creature" aria-label="Placeholder silhouette of three original creatures"><svg viewBox="0 0 500 500" fill="none"><g stroke="currentColor" stroke-width="3"><path opacity=".4" d="M50 384c58-97 91-151 147-162 41-8 73 19 95 65 19-72 56-111 107-95 43 14 64 73 51 149-8 52-38 91-85 103H128c-56-1-88-23-78-60Z"/><path d="M82 394c19-65 42-108 91-126l55 73-39 82H99Z"/><path d="M198 267l-10-90 39 57 25-89 17 100"/><path d="M295 280c36-84 96-111 136-75 50 45-10 172-84 170-40-1-64-37-52-95Z"/><path d="M364 274l34-88 12 88 42-48-12 94"/><path d="M166 331c10 0 18 8 18 18s-8 18-18 18-18-8-18-18 8-18 18-18Zm180-3c10 0 18 8 18 18s-8 18-18 18-18-8-18-18 8-18 18-18Z"/></g><g fill="currentColor"><circle cx="108" cy="373" r="4"/><circle cx="164" cy="348" r="4"/><circle cx="224" cy="365" r="4"/><circle cx="319" cy="347" r="4"/><circle cx="388" cy="341" r="4"/></g></svg></div><p class="creature-note">Illustration placeholder — three related species</p></div></div>
+      </div>
+      <div class="bottomline"><span>All names, systems & incidents are fictional composites</span><span>01 / 23</span></div>
+    </section>
+
+    <section class="slide light" data-slide="1" aria-label="Same model different authority">
+      <div class="topline"><span><i class="spec-dot"></i>Premise</span><span>Authority changes the system</span></div>
+      <div class="main"><p class="eyebrow reveal">One model. Three consequences.</p><h2 class="reveal">The hard part is not the brain.</h2><div class="three reveal"><article class="scenario"><b>Know</b><p>“What is our parental leave policy?”</p><small>Failure: wrong answer</small></article><article class="scenario" style="--accent:var(--key)"><b>Do</b><p>“My card is missing. Can you freeze it?”</p><small>Failure: wrong action</small></article><article class="scenario" style="--accent:var(--case)"><b>Decide</b><p>“Should this transaction be escalated?”</p><small>Failure: wrong judgment</small></article></div><p class="lede reveal">The model can be identical. What changes is the authority we delegate—and the price of being wrong.</p></div>
+      <div class="bottomline"><span>Architecture follows consequence</span><span>02 / 23</span></div>
+    </section>
+
+    <section class="slide" data-slide="2" aria-label="Agent definition">
+      <div class="topline"><span><i class="spec-dot"></i>Definition</span><span>What we mean by agent</span></div>
+      <div class="main"><p class="eyebrow reveal">A deliberately useful boundary</p><blockquote class="quote reveal">“An LLM agent runs tools in a loop to achieve a goal.”</blockquote><p class="citation reveal">Simon Willison · simonw.substack.com/p/i-think-agent-may-finally-have-a</p><div class="loop reveal"><span>Goal</span><b>→</b><span>Model</span><b>→</b><span>Tool request</span><b>→</b><span class="harness">Harness executes</span><b>→</b><span>Observation</span><b>↺</b></div><p class="lede reveal">That highlighted step is the engineering surface: policy, limits, identity, audit, and recovery live around the model—not inside a prompt.</p></div>
+      <div class="bottomline"><span>Tools + loop + stopping condition</span><span>03 / 23</span></div>
+    </section>
+
+    <section class="slide light" data-slide="3" aria-label="Authority gradient">
+      <div class="topline"><span><i class="spec-dot"></i>Taxonomy</span><span>Classify by highest-consequence freedom</span></div>
+      <div class="main"><p class="eyebrow reveal">The authority gradient</p><h2 class="reveal">How much control flow will you give away?</h2><div class="gradient reveal"><article><b>KNOW</b><p>Synthesize evidence</p><small>retrieval tools · wrong answer</small></article><article><b>DO</b><p>Select a capability</p><small>action tools · wrong action</small></article><article><b>DECIDE</b><p>Contribute to judgment</p><small>workflow · wrong decision</small></article></div><p class="lede reveal">These are archetypes, not boxes. A real system may combine all three; classify it by the most consequential freedom it has.</p></div>
+      <div class="bottomline"><span>More authority → more explicit controls</span><span>04 / 23</span></div>
+    </section>
+
+    <section class="slide" data-slide="4" aria-label="Sourcehound specimen">
+      <div class="topline"><span><i class="spec-dot"></i>Specimen I · Know</span><span>Retrieval agent</span></div>
+      <div class="main specimen"><div class="reveal"><div class="creature"><svg viewBox="0 0 500 500" fill="none"><g stroke="currentColor" stroke-width="4"><path d="M95 355c15-98 63-159 142-160 87-2 148 59 149 142 1 61-39 101-102 102H149c-55-1-65-36-54-84Z"/><path d="M147 274c-49-19-79-55-89-108 48 1 91 25 118 70M203 218l-9-103 51 81 42-94 3 110M321 281c52-12 94-2 125 32-46 19-89 13-128-15"/><path d="M145 428l-20 51m82-47-7 49m99-48 12 47"/><path d="M229 294c1 1 2 1 3 1 11 0 20-9 20-20s-9-20-20-20-20 9-20 20c0 8 4 15 11 18"/><path opacity=".6" d="M105 333c34-15 65-18 94-9m81 15c37-15 66-12 93 8"/></g><g fill="currentColor"><circle cx="224" cy="272" r="6"/><circle cx="110" cy="260" r="4"/><circle cx="370" cy="256" r="4"/><circle cx="419" cy="291" r="4"/></g></svg></div><p class="creature-note">Beast placeholder · compact scent-tracker of evidence</p></div><div class="reveal"><p class="eyebrow">Sourcehound</p><h2>Follow the evidence. Leave the trail.</h2><p class="species">*Archivora citans*</p><p class="command">What is our parental leave policy in Mexico?</p><div class="facts"><span>Instinct: retrieve & synthesize</span><span>Authority: where to look / what to say</span><span>Habitat: internal knowledge</span></div></div></div>
+      <div class="bottomline"><span>Healthy specimens cite their tracks</span><span>05 / 23</span></div>
+    </section>
+
+    <section class="slide light" data-slide="5" aria-label="Sourcehound loop">
+      <div class="topline"><span><i class="spec-dot"></i>Sourcehound · Instinct</span><span>Read-only tools in a loop</span></div>
+      <div class="main"><p class="eyebrow reveal">Agency starts with the next step</p><h2 class="reveal">A model can steer retrieval without changing the world.</h2><div class="loop reveal"><span>Question</span><b>→</b><span>search policies</span><b>→</b><span>inspect evidence</span><b>→</b><span>answer + citations</span><b>↺</b><span>refine / search another source</span></div><p class="lede reveal">If one mandatory retrieval step solves the job, normal RAG is enough. Use an agent loop when dynamic investigation of the evidence genuinely adds value.</p></div>
+      <div class="bottomline"><span>Read-only does not mean control-free</span><span>06 / 23</span></div>
+    </section>
+
+    <section class="slide" data-slide="6" aria-label="Sourcehound architecture">
+      <div class="topline"><span><i class="spec-dot"></i>Sourcehound · Habitat</span><span>Representative production architecture</span></div>
+      <div class="main"><p class="eyebrow reveal">Make authorization part of the tool</p><div class="diagram reveal"><span class="diagram-caption">Architecture placeholder · editable Excalidraw next</span><svg viewBox="0 0 900 460"><defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#bdc9c0"/></marker></defs><rect class="boundary" x="370" y="55" width="450" height="310" rx="24"/><text class="svg-label" x="390" y="80">INTERNAL DATA BOUNDARY</text><g><rect class="node" x="45" y="180" width="130" height="55" rx="10"/><text class="node-text" x="73" y="212">Employee / API</text><rect class="node" x="235" y="180" width="150" height="55" rx="10"/><text class="node-text" x="255" y="212">Agent harness</text><rect class="node" x="445" y="100" width="155" height="55" rx="10"/><text class="node-text" x="462" y="132">Model</text><rect class="node" x="445" y="250" width="180" height="55" rx="10"/><text class="node-text" x="461" y="282">Read-only gateway</text><rect class="node" x="690" y="170" width="130" height="55" rx="10"/><text class="node-text" x="710" y="202">ACL + index</text><rect class="node" x="690" y="275" width="130" height="55" rx="10"/><text class="node-text" x="708" y="307">Document store</text></g><path class="edge" d="M175 207H235M385 198l60-60M385 218l60 55M600 127l-215 70M625 278l65-65M625 280l65 20"/><path class="edge proposal" d="M445 260C405 255 402 220 385 218"/><text class="svg-label" x="396" y="246">proposal</text><text class="svg-label" x="440" y="346">limits · traces · timeouts</text></svg><span class="scribble">READ ONLY</span></div><p class="lede reveal">Identity-aware filtering happens before content enters the model context. The agent may choose a search; it never chooses who is allowed to see the result.</p></div>
+      <div class="bottomline"><span>Fictional systems & data</span><span>07 / 23</span></div>
+    </section>
+
+    <section class="slide light" data-slide="7" aria-label="Sourcehound implementation">
+      <div class="topline"><span><i class="spec-dot"></i>Sourcehound · Implementation</span><span>Bounded retrieval loop</span></div>
+      <div class="main split"><div class="reveal"><p class="eyebrow">A tool description is not authorization</p><pre class="code"><span class="accent">agent</span> = create_agent(
+  model=model,
+  tools=[search_policies,
+         get_policy, check_version],
+  middleware=[
+    ToolCallLimitMiddleware(
+      run_limit=5
+    )
+  ],
+  context_schema=EmployeeContext,
+  response_format=GroundedAnswer,
+)</pre></div><div class="reveal"><h2>Bounded. Grounded. Traceable.</h2><div class="callouts"><div class="callout">Read-only capability set</div><div class="callout">Trusted identity travels in runtime context</div><div class="callout">Citations or an explicit abstention</div></div><pre class="code" style="margin-top:1.25rem"><span class="muted"># inside the tool</span>
+return index.search(
+  query,
+  groups=runtime.context.groups
+)</pre></div></div>
+      <div class="bottomline"><span>API syntax: verify against pinned demo version</span><span>08 / 23</span></div>
+    </section>
+
+    <section class="slide" data-slide="8" aria-label="Sourcehound handling">
+      <div class="topline"><span><i class="spec-dot"></i>Sourcehound · Handling protocol</span><span>Grounding and access</span></div>
+      <div class="main protocol"><div class="reveal"><p class="eyebrow">Observed behavior</p><h2>It is a hound, not a historian.</h2><p class="lede">Its failure modes are about evidence quality, freshness, access, and the temptation to fill a gap elegantly.</p></div><div class="reveal"><table><thead><tr><th>Observed behavior</th><th>Handling protocol</th></tr></thead><tbody><tr><td>Eats nearest fragment</td><td>Retrieval evaluation + reranking</td></tr><tr><td>Hoards old policy</td><td>Versioning, freshness, deprecation</td></tr><tr><td>Finds restricted archive</td><td>Identity-aware filtering</td></tr><tr><td>Fills a gap plausibly</td><td>Evidence threshold + abstention</td></tr><tr><td>Leaves no trail</td><td>Source IDs + citations</td></tr></tbody></table></div></div>
+      <div class="bottomline"><span>Next: give the creature hands</span><span>09 / 23</span></div>
+    </section>
+
+    <section class="slide key" data-slide="9" aria-label="Keypaw specimen">
+      <div class="topline"><span><i class="spec-dot"></i>Specimen II · Do</span><span>Action agent</span></div>
+      <div class="main specimen"><div class="reveal"><div class="creature"><svg viewBox="0 0 500 500" fill="none"><g stroke="currentColor" stroke-width="4"><path d="M160 411c-54-88-44-188 18-236 64-50 160-21 182 57 20 69-11 162-84 185-43 14-87 11-116-6Z"/><path d="M184 222c-33-77-25-126 7-156 26 32 36 76 22 127M276 204c-5-79 17-126 55-145 15 42 5 83-30 124M136 335c-71-13-110-50-117-93 51-4 95 18 127 67M314 354c74-17 120-1 145 39-49 18-96 8-142-21"/><path d="M185 400l-64 53m103-41-25 72m70-73 25 72m30-85 69 39"/><path d="M227 273c13-10 31-7 41 7 10 13 7 31-7 41-13 10-31 7-41-7-10-13-7-31 7-41Z"/><path d="M114 289l29-34 25 36-28 35Z"/><path d="M371 304l35-14 20 38-34 19Z"/></g><g fill="currentColor"><circle cx="246" cy="292" r="5"/><circle cx="203" cy="323" r="4"/><circle cx="300" cy="323" r="4"/></g></svg></div><p class="creature-note">Beast placeholder · dexterous instrument-bearer</p></div><div class="reveal"><p class="eyebrow">Keypaw</p><h2>It can open things.</h2><p class="species">*Instrumentrix cauta*</p><p class="command">My card is missing. Can you freeze it?</p><div class="facts"><span>Instinct: select & use tools</span><span>Authority: propose a capability</span><span>Habitat: customer systems</span></div></div></div>
+      <div class="bottomline"><span>Useful and hazardous for the same reason</span><span>10 / 23</span></div>
+    </section>
+
+    <section class="slide light key" data-slide="10" aria-label="Tool authority">
+      <div class="topline"><span><i class="spec-dot"></i>Keypaw · Instinct</span><span>Tools delegate authority</span></div>
+      <div class="main split"><div class="reveal"><p class="eyebrow">A tool is not an API convenience</p><h2>It is a delegation of authority.</h2><p class="lede">The LLM proposes a call. Your application still decides whether that proposal may be executed.</p></div><div class="tools reveal"><div class="tool"><i></i><b>search_help_docs()</b><small>read</small></div><div class="tool"><i></i><b>get_card_status()</b><small>sensitive read</small></div><div class="tool"><i></i><b>freeze_card(card_id)</b><small>reversible write</small></div><div class="tool" style="--accent:var(--danger)"><i></i><b>transfer_money(...)</b><small>consequential write</small></div></div></div>
+      <div class="bottomline"><span>Tool access ≠ user permission ≠ execution approval</span><span>11 / 23</span></div>
+    </section>
+
+    <section class="slide key" data-slide="11" aria-label="Keypaw architecture">
+      <div class="topline"><span><i class="spec-dot"></i>Keypaw · Habitat</span><span>Policy boundary around execution</span></div>
+      <div class="main"><p class="eyebrow reveal">Proposal is not execution</p><div class="diagram reveal"><span class="diagram-caption">Architecture placeholder · editable Excalidraw next</span><svg viewBox="0 0 900 460"><defs><marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#bdc9c0"/></marker></defs><g><rect class="node" x="35" y="200" width="125" height="54" rx="10"/><text class="node-text" x="57" y="232">Customer app</text><rect class="node" x="230" y="200" width="150" height="54" rx="10"/><text class="node-text" x="253" y="232">Agent service</text><polygon class="node" points="470,180 550,180 580,227 550,274 470,274 440,227"/><text class="node-text" x="461" y="231">Policy gate</text><rect class="node" x="650" y="125" width="150" height="54" rx="10"/><text class="node-text" x="680" y="157">Safe reads</text><rect class="node" x="650" y="300" width="150" height="54" rx="10"/><text class="node-text" x="679" y="332">Action API</text><rect class="node" x="640" y="215" width="160" height="54" rx="10"/><text class="node-text" x="659" y="247">Confirm / HITL</text></g><path class="edge" style="marker-end:url(#arrow2)" d="M160 227h70m150 0h60m140-28h50m-80 70h70m80-70v-20m0 70v-30"/><path class="proposal" d="M380 210c25-45 48-44 66-17"/><text class="svg-label" x="380" y="170">proposed call</text><text class="svg-label" x="226" y="290">traces · limits · retries</text></svg><span class="scribble">CHECK THE COLLAR</span></div><p class="lede reveal">The policy layer owns eligibility, schemas, rate limits, identity propagation, confirmation, and audit. The model owns only the proposal.</p></div>
+      <div class="bottomline"><span>Fictional customer systems</span><span>12 / 23</span></div>
+    </section>
+
+    <section class="slide light key" data-slide="12" aria-label="Keypaw implementation">
+      <div class="topline"><span><i class="spec-dot"></i>Keypaw · Implementation</span><span>Narrow tools, explicit interrupt</span></div>
+      <div class="main split"><div class="reveal"><pre class="code"><span class="accent">agent</span> = create_agent(
+  model=model,
+  tools=[search_help,
+         get_card_status,
+         freeze_card],
+  middleware=[
+    ToolCallLimitMiddleware(
+      run_limit=6
+    ),
+    HumanInTheLoopMiddleware(
+      interrupt_on={"freeze_card": True}
+    ),
+  ],
+  context_schema=CustomerContext,
+)</pre></div><div class="reveal"><p class="eyebrow">The interface is a control</p><h2>Give it a key, not a master key.</h2><pre class="code" style="margin-top:1rem"><span class="accent">freeze_card</span>(card_id)       <span class="muted"># narrow</span>
+execute_banking_operation(
+  payload
+)                     <span class="muted"># too broad</span></pre><div class="callouts"><div class="callout">Dynamic tool selection is useful here.</div><div class="callout">Human review can approve, edit, or reject the call.</div></div></div></div>
+      <div class="bottomline"><span>Controls add up; prompts are one small layer</span><span>13 / 23</span></div>
+    </section>
+
+    <section class="slide key" data-slide="13" aria-label="Keypaw handling">
+      <div class="topline"><span><i class="spec-dot"></i>Keypaw · Handling protocol</span><span>Defense in depth</span></div>
+      <div class="main protocol"><div class="reveal"><p class="eyebrow">The dangerous animal has hands</p><h2>Control the behavior around the tool call.</h2><p class="lede">The protocol is a system property—there is no single magic prompt.</p></div><div class="reveal"><table><thead><tr><th>Observed behavior</th><th>Handling protocol</th></tr></thead><tbody><tr><td>Chooses wrong instrument</td><td>Small tool set + tool-choice evals</td></tr><tr><td>Uses right one incorrectly</td><td>Typed schemas + server-side validation</td></tr><tr><td>Keeps trying</td><td>Model/tool limits + timeouts</td></tr><tr><td>Reads hostile instructions</td><td>Treat tool output as untrusted</td></tr><tr><td>Acts as wrong customer</td><td>Propagated identity + downstream auth</td></tr><tr><td>Acts silently</td><td>Preview, confirmation, audit</td></tr></tbody></table></div></div>
+      <div class="bottomline"><span>Next: when steps must happen</span><span>14 / 23</span></div>
+    </section>
+
+    <section class="slide light case" data-slide="14" aria-label="May versus must">
+      <div class="topline"><span><i class="spec-dot"></i>Control flow</span><span>The turning point</span></div>
+      <div class="main"><p class="eyebrow reveal">May happen vs. must happen</p><h2 class="reveal">A prompt can request an invariant. A workflow can encode one.</h2><div class="mustmay reveal"><article><b>Agent loop · MAY</b><ul><li>Search another source</li><li>Ask a clarifying question</li><li>Call a status tool</li></ul></article><article><b>Workflow · MUST</b><ul><li>Collect required evidence</li><li>Run policy checks</li><li>Record rationale</li><li>Escalate uncertainty</li></ul></article></div><p class="lede reveal">Let the model own local reasoning. Keep the global process explicit when it carries operational invariants.</p></div>
+      <div class="bottomline"><span>Topology, not mysticism</span><span>15 / 23</span></div>
+    </section>
+
+    <section class="slide case" data-slide="15" aria-label="Caseweaver specimen">
+      <div class="topline"><span><i class="spec-dot"></i>Specimen III · Decide</span><span>Stateful decision workflow</span></div>
+      <div class="main specimen"><div class="reveal"><div class="creature"><svg viewBox="0 0 500 500" fill="none"><g stroke="currentColor" stroke-width="3.5"><path d="M133 406c-35-87-7-191 75-228 94-42 194 27 181 123-12 91-93 154-180 136-34-7-59-17-76-31Z"/><path d="M212 192c-6-55 11-99 49-128 19 38 17 80-4 125M161 249c-52-40-72-88-60-139 48 24 77 65 86 122M309 238c54-28 101-23 142 13-43 26-89 30-137 11"/><path d="M145 367c72-41 135-44 201-13M135 314c68 16 133 10 194-19M181 415l-19 62m71-50 2 57m67-59 25 50"/><path d="M245 264c19-15 47-10 62 10 15 19 10 47-10 62-19 15-47 10-62-10-15-19-10-47 10-62Z"/></g><g fill="currentColor"><circle cx="273" cy="293" r="5"/><circle cx="183" cy="300" r="4"/><circle cx="348" cy="291" r="4"/><circle cx="218" cy="361" r="4"/><circle cx="302" cy="355" r="4"/></g><g stroke="currentColor" opacity=".7"><path d="M183 300 273 293 348 291M183 300 218 361 302 355 348 291M273 293 302 355"/></g></svg></div><p class="creature-note">Beast placeholder · patient pattern-maker of evidence</p></div><div class="reveal"><p class="eyebrow">Caseweaver</p><h2>Build a case, not a verdict.</h2><p class="species">*Inquisitor probabilis*</p><p class="command">Build the case for whether this transaction should be escalated.</p><div class="facts"><span>Instinct: reconcile evidence</span><span>Authority: recommend judgment</span><span>Habitat: regulated workflow</span></div></div></div>
+      <div class="bottomline"><span>Serious; never omniscient</span><span>16 / 23</span></div>
+    </section>
+
+    <section class="slide light case" data-slide="16" aria-label="Fraud prompt">
+      <div class="topline"><span><i class="spec-dot"></i>Caseweaver · Instinct</span><span>Evidence before recommendation</span></div>
+      <div class="main split"><div class="reveal"><p class="eyebrow">Seductive baseline</p><pre class="code" style="font-size:clamp(.9rem,2vw,1.4rem)">transaction  →  LLM  →
+FRAUD / NOT FRAUD</pre><span class="stamp" style="--accent:var(--danger)">classification without a case</span></div><div class="reveal"><h2>Consequential work needs a recoverable process.</h2><div class="callouts"><div class="callout">Evidence completeness</div><div class="callout">Confidence + policy route</div><div class="callout">Structured rationale + provenance</div><div class="callout">Escalation + audit trail</div></div></div></div>
+      <div class="bottomline"><span>The output is a recommendation</span><span>17 / 23</span></div>
+    </section>
+
+    <section class="slide case" data-slide="17" aria-label="Caseweaver architecture">
+      <div class="topline"><span><i class="spec-dot"></i>Caseweaver · Habitat</span><span>Own the topology</span></div>
+      <div class="main"><p class="eyebrow reveal">Parallel evidence, persistent state, controlled route</p><div class="diagram reveal"><span class="diagram-caption">Architecture placeholder · editable Excalidraw next</span><svg viewBox="0 0 900 460"><defs><marker id="arrow3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#bdc9c0"/></marker></defs><g><rect class="node" x="25" y="200" width="130" height="52" rx="9"/><text class="node-text" x="38" y="232">Transaction event</text><rect class="node" x="210" y="200" width="130" height="52" rx="9"/><text class="node-text" x="238" y="232">Triage / policy</text><rect class="node" x="405" y="70" width="145" height="45" rx="9"/><text class="node-text" x="425" y="98">History</text><rect class="node" x="405" y="150" width="145" height="45" rx="9"/><text class="node-text" x="429" y="178">Device signals</text><rect class="node" x="405" y="230" width="145" height="45" rx="9"/><text class="node-text" x="420" y="258">Merchant signals</text><rect class="node" x="405" y="310" width="145" height="45" rx="9"/><text class="node-text" x="425" y="338">Pattern checks</text><rect class="node" x="630" y="180" width="160" height="52" rx="9"/><text class="node-text" x="650" y="212">Assess evidence</text><polygon class="node" points="820,185 865,208 820,231 775,208"/><text class="node-text" x="785" y="212">route</text></g><path class="edge" style="marker-end:url(#arrow3)" d="M155 226h55m130-8 65-120m-65 120 65-45m-65 55h65m-65 20 65 85m145-213 80 85m-80-35 80 35m-80 40 80-35m-80 80 80-116m75 0h-45"/><path class="boundary" d="M185 35h690v365H185z"/><text class="svg-label" x="200" y="58">LANGGRAPH WORKFLOW · DURABLE CHECKPOINTS · TRACE EVERY TRANSITION</text></svg><span class="scribble">some nodes are not LLMs</span></div><p class="lede reveal">Mandatory checks are deterministic. Uncertain assessment can be model-assisted. Human review is an external control—not a hopeful sentence in the system prompt.</p></div>
+      <div class="bottomline"><span>Why the graph exists</span><span>18 / 23</span></div>
+    </section>
+
+    <section class="slide light case" data-slide="18" aria-label="Caseweaver code">
+      <div class="topline"><span><i class="spec-dot"></i>Caseweaver · Implementation</span><span>Agentic nodes, deterministic topology</span></div>
+      <div class="main split"><div class="reveal"><pre class="code"><span class="accent">graph</span> = StateGraph(Investigation)
+
+graph.add_node("triage", triage)
+graph.add_node("history", get_history)
+graph.add_node("device", get_device_signals)
+graph.add_node("merchant", get_merchant_signals)
+graph.add_node("assess", assess_evidence)
+graph.add_node("human_review", review_case)
+
+graph.add_edge(START, "triage")
+graph.add_edge("triage", "history")
+graph.add_edge("triage", "device")
+graph.add_conditional_edges(
+  "assess", route_case
+)</pre></div><div class="reveal"><p class="eyebrow">Do not narrate every line</p><h2>Nodes can be agentic. The route is not.</h2><div class="callouts"><div class="callout">Deterministic: validation & policy</div><div class="callout">Model-assisted: assessment & rationale</div><div class="callout">External: human review & case handoff</div></div></div></div>
+      <div class="bottomline"><span>Complete state/reducers belong in repository appendix</span><span>19 / 23</span></div>
+    </section>
+
+    <section class="slide case" data-slide="19" aria-label="Caseweaver handling">
+      <div class="topline"><span><i class="spec-dot"></i>Caseweaver · Handling protocol</span><span>Persistence and review</span></div>
+      <div class="main protocol"><div class="reveal"><p class="eyebrow">Long-running work must survive reality</p><h2>Pause. Review. Resume.</h2><div class="loop" style="margin-top:1.5rem"><span>Graph</span><b>→</b><span>save checkpoint</span><b>→</b><span class="harness">interrupt for review</span><b>…</b><span>resume</span></div></div><div class="reveal"><table><thead><tr><th>Observed behavior</th><th>Handling protocol</th></tr></thead><tbody><tr><td>Decides before evidence arrives</td><td>Required state fields + joins</td></tr><tr><td>Treats conflict as certainty</td><td>Calibrated confidence + escalation</td></tr><tr><td>Loses place on failure</td><td>Durable checkpoints + idempotent nodes</td></tr><tr><td>Cannot explain recommendation</td><td>Evidence provenance + structured rationale</td></tr><tr><td>Finds novel case</td><td>Human interrupt + case handoff</td></tr></tbody></table></div></div>
+      <div class="bottomline"><span>Graph ≠ more intelligent; graph = more invariants</span><span>20 / 23</span></div>
+    </section>
+
+    <section class="slide light" data-slide="20" aria-label="Completed field guide">
+      <div class="topline"><span><i class="spec-dot"></i>Completed field guide</span><span>Photograph this slide</span></div>
+      <div class="main"><p class="eyebrow reveal">Three archetypes, one production discipline</p><h2 class="reveal">Name the authority. Then name the control.</h2><div class="matrix reveal"><div></div><div class="head">Sourcehound</div><div class="head" style="color:var(--key)">Keypaw</div><div class="head" style="color:var(--case)">Caseweaver</div><div class="row">Authority</div><div>KNOW</div><div>DO</div><div>DECIDE</div><div class="row">Delegated freedom</div><div>Which evidence tool to use</div><div>Which action to propose</div><div>Local reasoning in a controlled process</div><div class="row">Main risk</div><div>Wrong / unauthorized answer</div><div>Wrong action</div><div>Wrong recommendation / process failure</div><div class="row">Architecture</div><div>Retrieval loop + read tools</div><div>Agent loop + policy boundary</div><div>Explicit stateful graph</div><div class="row">Primary control</div><div>Grounding + access + limits</div><div>Govern execution</div><div>Workflow invariants + HITL</div></div></div>
+      <div class="bottomline"><span>Systems can combine all three</span><span>21 / 23</span></div>
+    </section>
+
+    <section class="slide" data-slide="21" aria-label="Architecture decision guide">
+      <div class="topline"><span><i class="spec-dot"></i>Decision guide</span><span>Choose by control flow, not fashion</span></div>
+      <div class="main split"><div><p class="eyebrow reveal">Start with the least freedom that creates value</p><h2 class="reveal">Is the prebuilt loop enough?</h2><div class="decision reveal"><div class="branch"><q>Mostly predetermined path?</q><span class="answer">Normal code / fixed retrieval</span></div><div class="branch"><q>Dynamic tool choice adds value?</q><span class="answer">LangChain agent</span></div><div class="branch"><q>Must pause, persist, inspect, or enforce order?</q><span class="answer">Explicit LangGraph workflow</span></div></div></div><div class="reveal"><p class="eyebrow">One stack · different control</p><div class="stack">LangGraph runtime<br>└── LangChain create_agent<br>&nbsp;&nbsp;&nbsp;&nbsp;└── model ↔ tools loop<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ middleware</div><p class="lede">The choice is rarely LangChain <em>or</em> LangGraph. It is whether you need to own the topology around the loop.</p></div></div>
+      <div class="bottomline"><span>The abstractions compose</span><span>22 / 23</span></div>
+    </section>
+
+    <section class="slide" data-slide="22" aria-label="Closing">
+      <div class="topline"><span><i class="spec-dot"></i>Close</span><span>Fantastic agents in production</span></div>
+      <div class="main closing"><p class="eyebrow reveal">A final handling principle</p><h2 class="reveal">Design for the animal you actually have.</h2><div class="three reveal"><article class="scenario"><b>Know</b><p>Ground it.</p></article><article class="scenario"><b>Do</b><p>Govern the tools.</p></article><article class="scenario"><b>Decide</b><p>Control the process.</p></article></div><p class="final-line reveal">What freedom does this agent actually need?<br><em>Give it that freedom. Control everything else.</em></p></div>
+      <div class="bottomline"><span>Thank you</span><span>23 / 23</span></div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const deck = document.getElementById('deck');
+      const slides = [...document.querySelectorAll('.slide')];
+      const progress = document.getElementById('progress');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let current = 0, locked = false, startY = 0;
+      const go = (index, instant=false) => { if (index < 0 || index >= slides.length) return; current=index; slides[index].classList.add('visible'); slides[index].scrollIntoView({behavior:(reduced||instant)?'auto':'smooth',block:'start'}); update(); };
+      const update = () => { progress.style.width = `${((current+1)/slides.length)*100}%`; };
+      const requestedSlide = Number.parseInt(new URLSearchParams(window.location.search).get('slide'), 10);
+      const observer = new IntersectionObserver((entries) => entries.forEach(entry => { if (entry.isIntersecting && entry.intersectionRatio > .55) { current=slides.indexOf(entry.target); entry.target.classList.add('visible'); update(); }}), {root:deck,threshold:[.55]});
+      slides.forEach(s=>observer.observe(s)); slides[0].classList.add('visible'); update();
+      if (Number.isInteger(requestedSlide)) requestAnimationFrame(() => go(Math.max(0, Math.min(slides.length - 1, requestedSlide - 1)), true));
+      document.addEventListener('keydown', e => { if (['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)) {e.preventDefault();go(current+1)} if (['ArrowUp','ArrowLeft','PageUp'].includes(e.key)) {e.preventDefault();go(current-1)} if(e.key==='Home'){e.preventDefault();go(0)} if(e.key==='End'){e.preventDefault();go(slides.length-1)} });
+      deck.addEventListener('wheel', e => { if (locked || Math.abs(e.deltaY)<12) return; e.preventDefault(); locked=true; go(current+(e.deltaY>0?1:-1)); setTimeout(()=>locked=false, reduced?0:650); }, {passive:false});
+      deck.addEventListener('touchstart', e => { startY=e.touches[0].clientY }, {passive:true});
+      deck.addEventListener('touchend', e => { const delta=startY-e.changedTouches[0].clientY; if(Math.abs(delta)>45) go(current+(delta>0?1:-1)); }, {passive:true});
+    })();
+  </script>
+</body>
+</html>

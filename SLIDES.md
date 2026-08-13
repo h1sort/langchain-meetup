@@ -20,6 +20,8 @@ This is explicitly a talk about **agents in production**: authorization, failure
 
 > Agents become harder to build not because they become smarter, but because we give them more authority.
 
+Production is not a hosting destination. It is the point where an agent’s failure becomes somebody’s operational problem. Every specimen is therefore examined through five production properties: **authorization, bounded execution, observability, recoverability, and evaluation**.
+
 The talk uses Simon Willison’s deliberately narrow definition:
 
 > “An LLM agent runs tools in a loop to achieve a goal.” — Simon Willison
@@ -100,7 +102,7 @@ Prefer **handling**, **protocol**, **habitat**, and **control** over “cage.”
 
 ## Main deck
 
-### Slide 1 — Title: Fantastic Agents and How to Handle Them
+### Slide 1 — Title: Fantastic Agents and Where to Find Them
 
 **Time:** 0:30
 
@@ -122,7 +124,7 @@ Prefer **handling**, **protocol**, **habitat**, and **control** over “cage.”
 
 **Time:** 1:15
 
-**Purpose:** Break the assumption that model capability determines system complexity.
+**Purpose:** Break the assumption that model capability determines system complexity and establish why production changes the conversation.
 
 **On screen:** Three user requests appear one at a time:
 
@@ -132,7 +134,7 @@ Prefer **handling**, **protocol**, **habitat**, and **control** over “cage.”
 
 The same model icon sits behind all three. The consequences beneath them change: **wrong answer → wrong action → wrong judgment**.
 
-**Speaker beat:** The model could be identical. What changes is the authority we grant it and the cost of being wrong.
+**Speaker beat:** The model could be identical. What changes is the authority we grant it and the cost of being wrong. A demo proves one path can work; production engineering decides what happens across every path—including failure.
 
 **Do not:** Name LangChain or LangGraph yet.
 
@@ -327,6 +329,7 @@ Callouts point to: read-only tools, propagated identity, bounded loop, structure
 | Hoards old policy                            | Versioning, freshness metadata, deprecation |
 | Wanders into restricted archives             | Identity-aware filtering before context     |
 | Fills gaps with plausible material           | Evidence threshold and explicit abstention  |
+| Sniffs in circles without finishing          | Tool-call budget, timeout, and stop policy   |
 | Leaves no trail                              | Source IDs and citations                    |
 
 
@@ -436,7 +439,7 @@ execute_banking_operation(payload)    # dangerously broad
 
 **Speaker beat:** High-level agents are useful when we want dynamic tool selection. Middleware adds controls without requiring us to draw the standard agent loop ourselves.
 
-**Callback to the definition:** This is the first specimen that unambiguously satisfies it: the LLM selects tools, observes their results, and continues until it reaches a bounded goal.
+**Callback to the definition:** Like the Sourcehound, the LLM selects tools, observes results, and continues toward a bounded goal. The difference is authority: Keypaw’s tools can now create side effects.
 
 **Technical note for narration:** The human-in-the-loop layer can approve, edit, or reject tool calls according to policy; use only the options actually configured in the final demo.
 
@@ -635,14 +638,14 @@ Below it, pair behaviors with controls:
 **On screen:**
 
 
-|                   | **Sourcehound**      | **Keypaw**              | **Caseweaver**                          |
-| ----------------- | -------------------- | ----------------------- | --------------------------------------- |
-| Specimen          | *Archivora citans*   | *Instrumentrix cauta*   | *Inquisitor probabilis*                 |
-| Authority         | KNOW                 | DO                      | DECIDE                                  |
-| Delegated freedom | What to say          | Which tool to propose   | Local reasoning in a controlled process |
-| Main risk         | Wrong answer         | Wrong action            | Wrong recommendation/process failure    |
-| Architecture      | 2-step RAG           | Agent loop + tools      | Explicit stateful graph                 |
-| Primary control   | Grounding and access | Policy around execution | Workflow invariants, persistence, HITL  |
+|                   | **Sourcehound**               | **Keypaw**              | **Caseweaver**                          |
+| ----------------- | ----------------------------- | ----------------------- | --------------------------------------- |
+| Specimen          | *Archivora citans*            | *Instrumentrix cauta*   | *Inquisitor probabilis*                 |
+| Authority         | KNOW                          | DO                      | DECIDE                                  |
+| Delegated freedom | Which evidence tools to use   | Which action to propose | Local reasoning in a controlled process |
+| Main risk         | Wrong or unauthorized answer  | Wrong action            | Wrong recommendation/process failure    |
+| Architecture      | Read-only retrieval agent     | Agent loop + tools      | Explicit stateful graph                 |
+| Primary control   | Access, grounding, loop bounds| Policy around execution | Workflow invariants, persistence, HITL  |
 
 
 Include a small portrait of each creature above its column. Keep this slide clean enough to photograph.
@@ -660,11 +663,14 @@ Include a small portrait of each creature above its column. Keep this slide clea
 **On screen:** A three-way decision path:
 
 ```text
-Is the useful path mostly predetermined?
-  └─ yes → normal code / deterministic RAG
+Does the model need to choose tools in a loop?
+  └─ no → normal code / deterministic RAG
 
-Should the model dynamically choose among capabilities?
-  └─ yes → high-level LangChain agent
+Are all tools observational and read-only?
+  └─ yes → retrieval agent + grounding and loop bounds
+
+Can tools change external state?
+  └─ yes → agent + execution policy and approval
 
 Must you control, persist, inspect, or interrupt the process itself?
   └─ yes → explicit LangGraph orchestration
@@ -752,7 +758,7 @@ After those cuts, the expected runtime is approximately 29 minutes before rehear
 
 Default recommendation: architecture-first, with three code reveals and at most one short prerecorded or deterministic demo.
 
-- **KNOW snippet:** ordinary application code with retrieval, authorization filtering, and abstention.
+- **KNOW snippet:** `create_agent` with read-only retrieval tools, propagated identity, loop limits, structured citations, and abstention.
 - **DO snippet:** `create_agent`, three narrow tools, call limits, and human-in-the-loop middleware.
 - **DECIDE snippet:** `StateGraph` topology plus a link/QR code to the complete implementation.
 - Use the same banking domain and, if possible, a shared fictional customer context across all examples.
