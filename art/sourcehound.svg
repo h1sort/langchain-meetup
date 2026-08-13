@@ -1,0 +1,83 @@
+<svg viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
+<title>Sourcehound — an alert quadruped tracking a trail of evidence fragments</title>
+<g class="ink-line" stroke="currentColor" fill="none">
+
+<!-- ===== HEAD / MUZZLE (elongated, hound-like) ===== -->
+<path pathLength="1" stroke-width="4.2" d="M48,360 C40,340 44,318 60,300 C76,282 96,266 118,254 C142,242 168,238 190,248 C206,256 216,270 216,286 C216,298 210,308 200,314"/>
+<path pathLength="1" stroke-width="3.8" d="M48,360 C42,376 46,390 62,400 C82,412 110,416 136,412 C156,409 172,403 182,394"/>
+<path pathLength="1" stroke-width="2" d="M58,372 C76,380 96,382 114,378"/>
+
+<!-- ear -->
+<path pathLength="1" stroke-width="3" d="M182,268 C173,234 168,198 180,150 C196,164 210,194 213,230 C215,248 206,262 190,264 C187,265 184,266 182,268"/>
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M188,244 C183,218 182,188 190,158"/>
+
+<!-- eye -->
+<path pathLength="1" stroke-width="2.8" d="M138,296 C146,284 164,282 174,292 C183,300 182,314 171,321 C159,328 143,322 137,310 C135,305 135,300 138,296"/>
+<path pathLength="1" stroke-width="2" opacity="0.7" d="M142,290 C154,282 168,284 176,292"/>
+
+<!-- ===== NECK / TOPLINE / TAIL BASE ===== -->
+<path pathLength="1" stroke-width="4.4" d="M200,300 C214,304 224,310 232,318 C248,314 266,311 288,310 C336,306 388,308 420,320 C436,326 448,335 458,346"/>
+
+<!-- ===== BELLY (underside, lean tucked line) ===== -->
+<path pathLength="1" stroke-width="3.6" d="M200,418 C216,440 232,454 252,456 C296,460 336,444 362,410 C378,390 392,384 406,384"/>
+
+<!-- brisket / chest connecting throat to belly -->
+<path pathLength="1" stroke-width="3.4" d="M182,394 C188,402 194,410 200,418"/>
+
+<!-- haunch rear curve joining back to hind leg -->
+<path pathLength="1" stroke-width="3.8" d="M472,362 C482,376 484,392 478,406 C472,420 460,430 444,436"/>
+
+<!-- ===== FRONT LEG — PLANTED ===== -->
+<path pathLength="1" stroke-width="3.6" d="M240,340 C236,378 230,418 224,458 C220,502 213,552 207,604 C202,606 198,610 195,612"/>
+<path pathLength="1" stroke-width="2" d="M193,616 C195,624 196,632 194,640"/>
+<path pathLength="1" stroke-width="2" d="M218,612 C220,620 221,628 219,636"/>
+
+<!-- ===== FRONT LEG — LIFTED, MID-TRACK (forward, clear of head) ===== -->
+<path pathLength="1" stroke-width="3.6" d="M226,346 C224,370 220,394 214,414 C198,432 170,446 140,456 C126,460 112,464 100,470"/>
+<path pathLength="1" stroke-width="2" d="M104,468 C94,476 86,484 80,494"/>
+<path pathLength="1" stroke-width="2" d="M124,462 C118,472 114,482 112,492"/>
+
+<!-- ===== HIND LEG — FAR (glimpsed behind the near leg, lighter) ===== -->
+<path pathLength="1" stroke-width="2.6" opacity="0.7" d="M412,354 C408,386 404,418 398,446 C392,470 384,490 377,506 C371,512 365,516 359,520"/>
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M365,518 C363,524 363,530 365,535"/>
+
+<!-- ===== HIND LEG — NEAR (weight-bearing, driving) ===== -->
+<path pathLength="1" stroke-width="3.8" d="M448,358 C456,394 458,430 450,464 C444,492 432,520 420,556 C414,556 409,558 406,560"/>
+<path pathLength="1" stroke-width="2" d="M404,564 C402,572 401,580 404,588"/>
+<path pathLength="1" stroke-width="2" d="M429,562 C431,569 432,577 430,584"/>
+
+<!-- ===== WHISKERS ===== -->
+<path pathLength="1" stroke-width="2" opacity="0.7" d="M50,338 C34,326 18,318 6,314"/>
+<path pathLength="1" stroke-width="2" opacity="0.7" d="M49,366 C33,372 17,379 6,388"/>
+<path pathLength="1" stroke-width="2" opacity="0.55" d="M54,374 C38,388 24,402 16,414"/>
+
+<!-- ===== LAYERED PAPER PLUMAGE — BACK (overlapping parchment leaves) ===== -->
+<path pathLength="1" stroke-width="2.4" opacity="0.65" d="M244,314 C258,300 276,294 292,298 C284,312 270,322 254,324 C248,322 244,318 244,314"/>
+<path pathLength="1" stroke-width="2.4" opacity="0.6" d="M284,306 C300,294 320,290 336,294 C328,308 312,318 294,320 C288,317 285,312 284,306"/>
+<path pathLength="1" stroke-width="2.4" opacity="0.65" d="M328,300 C344,288 364,284 380,288 C372,302 356,312 338,314 C332,310 329,306 328,300"/>
+<path pathLength="1" stroke-width="2.2" opacity="0.55" d="M412,302 C426,294 442,292 456,298 C448,308 434,314 418,312 C414,309 412,306 412,302"/>
+
+<!-- ===== LAYERED PLUMAGE — HAUNCH (larger feather-scales, follow curve) ===== -->
+<path pathLength="1" stroke-width="2.6" opacity="0.6" d="M422,364 C436,352 454,350 468,360 C458,374 442,380 426,376 C423,372 422,368 422,364"/>
+<path pathLength="1" stroke-width="2.4" opacity="0.55" d="M414,394 C428,384 444,384 456,392 C446,404 430,410 416,405 C414,402 413,398 414,394"/>
+
+<!-- ===== TAIL — plume sweeping up and back ===== -->
+<path pathLength="1" stroke-width="3.8" d="M458,346 C490,330 518,304 533,270 C545,240 548,206 536,168"/>
+<path pathLength="1" stroke-width="3.2" d="M452,372 C480,360 504,340 519,314 C532,292 538,264 532,232"/>
+<path pathLength="1" stroke-width="2.2" opacity="0.65" d="M480,350 C497,332 510,310 517,284"/>
+<path pathLength="1" stroke-width="2" opacity="0.55" d="M498,318 C511,302 520,282 525,256"/>
+
+<!-- ===== TORN-PAPER EVIDENCE FRAGMENTS (outlined) ===== -->
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M498,162 C506,157 516,159 520,167 C514,174 504,173 498,167 C496,165 496,163 498,162"/>
+<path pathLength="1" stroke-width="2" opacity="0.5" d="M532,193 C540,187 550,189 554,197 C548,203 538,203 532,197 C530,195 530,194 532,193"/>
+
+</g>
+
+<g class="ink-fill" fill="currentColor" stroke="none">
+<path d="M154,300 C158,296 164,296 167,300 C170,304 168,310 163,312 C158,313 153,310 153,305 C153,303 153,301 154,300"/>
+<circle cx="512" cy="152" r="4"/>
+<circle cx="542" cy="170" r="3.4"/>
+<circle cx="524" cy="199" r="3"/>
+<circle cx="556" cy="212" r="2.6"/>
+</g>
+</svg>

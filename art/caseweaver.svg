@@ -1,0 +1,90 @@
+<svg viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
+<title>Caseweaver — a broad shelled creature with several sensory organs drawing evidence threads into a pattern</title>
+<g class="ink-line" stroke="currentColor" fill="none">
+
+<!-- ===== HEAD ===== -->
+<path pathLength="1" stroke-width="4" d="M205,300 C185,262 155,232 118,222 C98,217 82,222 76,240"/>
+<path pathLength="1" stroke-width="3.6" d="M76,240 C68,262 76,284 96,300 C120,320 152,328 180,330 C190,331 197,329 202,325"/>
+<path pathLength="1" stroke-width="2.2" d="M92,232 C104,222 120,220 133,228"/>
+
+<!-- primary eye (large, forward-facing) -->
+<path pathLength="1" stroke-width="2.8" d="M100,300 C107,286 126,283 139,293 C150,302 150,318 137,327 C122,336 104,329 99,314 C97,309 97,304 100,300"/>
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M106,299 C112,293 120,291 127,293"/>
+
+<!-- secondary eye A: stalked, aimed up -->
+<path pathLength="1" stroke-width="2.4" d="M150,262 C154,248 154,232 148,218"/>
+<path pathLength="1" stroke-width="2" d="M141,215 C143,209 151,207 156,211 C161,215 160,222 154,225 C148,228 142,224 141,218 C141,217 141,216 141,215"/>
+
+<!-- secondary eye B: stalked, aimed back -->
+<path pathLength="1" stroke-width="2.4" d="M195,288 C211,281 224,269 230,253"/>
+<path pathLength="1" stroke-width="2" d="M224,251 C225,245 232,242 237,246 C242,250 240,257 234,259 C228,261 223,257 224,252 C224,251 224,251 224,251"/>
+
+<!-- secondary eye C: recessed, aimed forward/down near the snout -->
+<path pathLength="1" stroke-width="2" d="M76,266 C77,260 84,257 89,261 C94,265 93,272 87,275 C81,278 75,274 76,268 C76,267 76,267 76,266"/>
+
+<!-- secondary eye D: recessed, aimed sideways/back -->
+<path pathLength="1" stroke-width="2" d="M181,294 C182,288 189,285 194,289 C199,293 198,300 192,303 C186,305 180,301 181,295 C181,295 181,294 181,294"/>
+
+<!-- ===== NECK (top contour flows straight into the shell topline, one unbroken sweep) ===== -->
+<path pathLength="1" stroke-width="3.8" d="M205,300 C245,270 300,235 350,210 C400,188 460,185 500,210 C518,231 526,260 521,298"/>
+<path pathLength="1" stroke-width="3.4" d="M202,325 C232,368 248,418 244,478"/>
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M197,309 C208,307 218,309 225,315"/>
+<path pathLength="1" stroke-width="2" opacity="0.55" d="M208,335 C221,340 231,349 237,361"/>
+
+<!-- ===== SHELL ===== -->
+<path pathLength="1" stroke-width="3.4" d="M244,478 C268,522 307,548 357,555 C407,562 453,554 490,530"/>
+<path pathLength="1" stroke-width="3.6" d="M518,298 C531,332 529,376 509,412 C496,434 490,460 488,480"/>
+<path pathLength="1" stroke-width="2" d="M331,206 C320,245 305,290 288,330"/>
+<path pathLength="1" stroke-width="2" d="M401,193 C396,238 383,285 365,328"/>
+<path pathLength="1" stroke-width="2" d="M463,209 C462,250 450,293 428,332"/>
+<path pathLength="1" stroke-width="2" opacity="0.4" d="M301,271 Q346,236 391,271"/>
+<path pathLength="1" stroke-width="2" opacity="0.4" d="M281,321 Q356,276 431,321"/>
+<path pathLength="1" stroke-width="2" opacity="0.4" d="M263,376 Q366,321 469,376"/>
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M471,301 C481,321 485,343 481,363"/>
+
+<!-- ===== TAIL (low stub at the rear, between the shell's back edge and the hind leg) ===== -->
+<path pathLength="1" stroke-width="3" d="M486,495 C506,498 523,508 534,522 C539,529 537,537 529,542"/>
+<path pathLength="1" stroke-width="2" opacity="0.55" d="M490,512 C503,516 514,524 521,534"/>
+
+<!-- ===== FRONT LEG — NEAR ===== -->
+<path pathLength="1" stroke-width="3.6" d="M278,480 C271,510 266,540 270,568 C272,580 278,590 288,598"/>
+<path pathLength="1" stroke-width="2" d="M288,598 C284,604 282,610 284,616"/>
+<path pathLength="1" stroke-width="2" d="M288,598 C294,604 298,610 298,616"/>
+
+<!-- ===== FRONT LEG — FAR (peek) ===== -->
+<path pathLength="1" stroke-width="2.6" opacity="0.8" d="M320,472 C317,498 315,522 319,544"/>
+
+<!-- ===== BACK LEG — NEAR ===== -->
+<path pathLength="1" stroke-width="3.6" d="M452,478 C448,512 446,544 452,572 C455,586 462,596 472,602"/>
+<path pathLength="1" stroke-width="2" d="M472,602 C468,608 466,614 468,620"/>
+<path pathLength="1" stroke-width="2" d="M472,602 C478,608 482,614 482,620"/>
+
+<!-- ===== BACK LEG — FAR (peek) ===== -->
+<path pathLength="1" stroke-width="2.6" opacity="0.8" d="M418,485 C415,510 414,534 418,554"/>
+
+</g>
+
+<g class="ink-web" stroke="currentColor" fill="none" opacity="0.55">
+<path pathLength="1" stroke-width="1.4" d="M280,525 C295,390 270,220 200,170 C185,160 165,157 150,155"/>
+<path pathLength="1" stroke-width="1.4" d="M250,360 C210,270 170,170 130,120 C122,108 115,96 108,86"/>
+<path pathLength="1" stroke-width="1.4" d="M350,285 C335,210 320,130 310,70"/>
+<path pathLength="1" stroke-width="1.4" d="M430,300 C465,235 498,165 520,105"/>
+<path pathLength="1" stroke-width="1.4" d="M460,470 C490,430 508,385 515,335"/>
+<path pathLength="1" stroke-width="1.4" d="M280,565 C205,545 130,475 70,380"/>
+</g>
+
+<g class="ink-fill" fill="currentColor" stroke="none">
+<circle cx="119" cy="306" r="5.5"/>
+<circle cx="148" cy="216" r="3.2"/>
+<circle cx="231" cy="252" r="3.2"/>
+<circle cx="82" cy="268" r="2.6"/>
+<circle cx="187" cy="294" r="2.6"/>
+
+<path d="M150,143 Q163,155 150,167 Q137,155 150,143"/>
+<circle cx="108" cy="86" r="3.2"/>
+<circle cx="310" cy="70" r="3.6"/>
+<path d="M520,93 Q530,105 520,117 Q510,105 520,93"/>
+<circle cx="515" cy="335" r="3.6"/>
+<path d="M70,368 Q80,380 70,392 Q60,380 70,368"/>
+</g>
+</svg>

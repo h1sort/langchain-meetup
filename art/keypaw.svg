@@ -1,0 +1,51 @@
+<svg viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
+<title>Keypaw — an upright creature with four specialized instrument-bearing forelimbs and a banded collar</title>
+<g class="ink-line" stroke="currentColor" fill="none">
+<path pathLength="1" stroke-width="4.2" d="M266,74 C244,84 230,112 238,140 C244,164 260,184 282,198 C289,203 296,207 300,210 C304,207 311,203 318,198 C340,184 356,164 362,140 C370,112 356,84 334,74 C313,64 287,64 266,74 Z"/>
+<path pathLength="1" stroke-width="3.4" d="M270,86 C260,68 253,50 259,42 C268,54 279,68 288,86 Z"/>
+<path pathLength="1" stroke-width="3.4" d="M330,86 C340,68 347,50 341,42 C332,54 321,68 312,86 Z"/>
+<path pathLength="1" stroke-width="2" d="M268,78 C261,64 258,52 262,46"/>
+<path pathLength="1" stroke-width="2" d="M332,78 C339,64 342,52 338,46"/>
+<path pathLength="1" stroke-width="2.3" d="M272,126 Q283,116 294,126 Q283,138 272,126 Z"/>
+<path pathLength="1" stroke-width="2.3" d="M328,126 Q317,116 306,126 Q317,138 328,126 Z"/>
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M264,110 Q280,98 296,108"/>
+<path pathLength="1" stroke-width="2" opacity="0.6" d="M336,110 Q320,98 304,108"/>
+<path pathLength="1" stroke-width="2" opacity="0.5" d="M300,150 Q297,180 300,208"/>
+<path pathLength="1" stroke-width="4.4" d="M242,228 C210,258 202,312 214,362 C221,396 236,420 258,438 C272,450 328,450 342,438 C364,420 379,396 386,362 C398,312 390,258 358,228 C330,210 270,210 242,228 Z"/>
+<path pathLength="1" stroke-width="2" opacity="0.45" d="M300,230 Q297,285 300,340"/>
+<path pathLength="1" stroke-width="2" opacity="0.4" d="M236,260 Q220,308 233,352"/>
+<path pathLength="1" stroke-width="2" opacity="0.4" d="M364,260 Q380,308 367,352"/>
+<path pathLength="1" stroke-width="2" opacity="0.5" d="M250,402 Q300,417 340,404"/>
+<path pathLength="1" stroke-width="3" d="M238,212 Q300,196 362,212 Q300,228 238,212 Z"/>
+<path pathLength="1" stroke-width="3" d="M242,224 Q300,210 358,224 Q300,238 242,224 Z"/>
+<path pathLength="1" stroke-width="3.4" d="M244,230 C202,224 166,210 136,192 C127,187 119,183 112,180"/>
+<path pathLength="1" stroke-width="3.4" d="M112,180 C86,171 60,165 46,146 C36,132 41,113 59,106 C73,101 84,110 82,125"/>
+<path pathLength="1" stroke-width="2.2" opacity="0.7" d="M50,110 C45,104 39,101 33,104"/>
+<path pathLength="1" stroke-width="3.4" d="M356,230 C398,224 434,210 464,192 C473,187 481,183 488,180"/>
+<path pathLength="1" stroke-width="3.1" d="M488,182 C498,162 506,142 502,122"/>
+<path pathLength="1" stroke-width="3.1" d="M488,188 C504,193 518,190 528,174"/>
+<path pathLength="1" stroke-width="3.4" d="M220,364 C182,370 146,382 116,402 C106,409 100,414 96,420"/>
+<path pathLength="1" stroke-width="3" d="M96,420 C76,409 54,407 40,417 C31,424 31,436 42,443 C56,451 76,449 92,438 C99,432 100,426 96,420 Z"/>
+<path pathLength="1" stroke-width="2" opacity="0.5" d="M42,414 Q44,430 40,444"/>
+<path pathLength="1" stroke-width="2" opacity="0.5" d="M64,410 Q68,428 62,442"/>
+<path pathLength="1" stroke-width="3.4" d="M380,364 C412,368 442,378 468,394 C480,401 490,409 498,417"/>
+<path pathLength="1" stroke-width="2.6" d="M500,412 C511,404 520,402 527,406 C532,409 538,407 533,400"/>
+<path pathLength="1" stroke-width="2.6" d="M500,419 C514,417 526,419 536,426 C543,430 549,429 545,421"/>
+<path pathLength="1" stroke-width="2.6" d="M498,426 C510,434 520,444 524,456 C527,464 534,468 540,462"/>
+<path pathLength="1" stroke-width="4.3" d="M268,432 C238,458 226,498 236,538 C241,560 238,580 228,600 C220,616 224,630 238,638 C254,646 274,644 284,632 C292,622 288,608 280,596 C270,580 272,558 282,536 C296,498 292,458 300,432 C288,420 276,420 268,432 Z"/>
+<path pathLength="1" stroke-width="4.3" d="M332,432 C362,458 374,498 364,538 C359,560 362,580 372,600 C380,616 376,630 362,638 C346,646 326,644 316,632 C308,622 312,608 320,596 C330,580 328,558 318,536 C304,498 308,458 300,432 C312,420 324,420 332,432 Z"/>
+<path pathLength="1" stroke-width="2" opacity="0.55" d="M246,628 Q248,640 244,650"/>
+<path pathLength="1" stroke-width="2" opacity="0.55" d="M354,628 Q352,640 356,650"/>
+<path pathLength="1" stroke-width="3.6" d="M380,380 C412,390 440,406 462,434 C485,462 501,500 508,544 C512,568 509,592 495,604 C485,612 475,600 473,584 C465,548 449,512 424,480 C402,452 392,424 386,400 C384,390 382,384 380,380 Z"/>
+<path pathLength="1" stroke-width="2" opacity="0.45" d="M402,420 Q434,458 452,494"/>
+</g>
+<g class="ink-fill" fill="currentColor" stroke="none">
+<path d="M277.5,127 a5.5,5.5 0 1,0 11,0 a5.5,5.5 0 1,0 -11,0"/>
+<path d="M311.5,127 a5.5,5.5 0 1,0 11,0 a5.5,5.5 0 1,0 -11,0"/>
+<path d="M294,236 C290,246 292,256 300,264 C308,256 310,246 306,236 C303,241 297,241 294,236 Z"/>
+<path d="M252,204 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+<path d="M340,204 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+<path d="M524.5,405.5 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0"/>
+<path d="M533.5,425.5 a2.5,2.5 0 1,0 5,0 a2.5,2.5 0 1,0 -5,0"/>
+</g>
+</svg>
