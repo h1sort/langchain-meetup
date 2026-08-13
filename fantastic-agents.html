@@ -238,13 +238,19 @@
   .gradient .scale{grid-column:1/-1;display:flex;justify-content:space-between;font-family:var(--f-deco);font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-dim);margin-top:.4rem;padding-top:.7rem;border-top:1px solid var(--brass-ink)}
 
   /* specimen plate */
-  .specimen{display:grid;grid-template-columns:.82fr 1fr;align-items:center;gap:clamp(1rem,4.5vw,5.5rem)}
+  .specimen{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1fr);align-items:center;gap:clamp(1rem,4.5vw,5.5rem)}
   .plate-art{position:relative;display:grid;place-items:center;min-height:0;padding:clamp(.9rem,2vw,1.8rem);border:1px solid var(--brass-dim)}
   .plate-art::before,.plate-art::after{content:'';position:absolute;width:12px;height:12px;border:1px solid var(--brass);opacity:.55}
   .plate-art::before{top:6px;left:6px;border-right:0;border-bottom:0}
   .plate-art::after{bottom:6px;right:6px;border-left:0;border-top:0}
   .plate-art .beast{height:min(58vh,32rem)}
   .plate-art .beast svg{height:100%;width:auto;margin:0 auto}
+  .plate-art.photo-plate{width:100%;padding:clamp(.45rem,1vw,.8rem);overflow:hidden;min-width:0;max-width:100%}
+  .plate-image{display:block;width:100%;max-width:100%;min-width:0;height:auto;aspect-ratio:3/2;object-fit:cover;filter:saturate(.88) contrast(1.06);border:1px solid rgba(199,154,69,.24)}
+  .photo-plate .beast{display:none}
+  .photo-plate .beast-aura{inset:8%;opacity:.32;z-index:0}
+  .photo-plate .plate-image,.photo-plate .plate-cap{position:relative;z-index:1}
+  .photo-plate .plate-cap{padding-inline:.45rem}
   .plate-cap{font-family:var(--f-display);font-style:italic;font-size:clamp(.78rem,1vw,.98rem);color:var(--paper-dim);text-align:center;margin-top:.7rem}
   .specimen h2{max-width:13ch}
   .species{font-family:var(--f-display);font-style:italic;font-size:clamp(1.05rem,1.6vw,1.5rem);color:var(--accent);margin-top:.55rem;letter-spacing:.01em}
@@ -341,6 +347,28 @@
   .final{font-family:var(--f-display);font-size:clamp(1.15rem,2.4vw,2.4rem);line-height:1.22;max-width:34ch;text-wrap:balance;margin:clamp(1.2rem,3vh,2.4rem) auto 0}
   .final em{font-style:italic;color:var(--brass-lit)}
 
+  /* ---------- generated field artwork ---------- */
+  .cover .trio .t1 .beast,.closing .trio .t1 .beast,.gradient .c-know .beast,.matrix .m-know .beast{
+    background:url("assets/sourcehound-cutout.webp") center/contain no-repeat
+  }
+  .cover .trio .t2 .beast,.closing .trio .t2 .beast,.gradient .c-do .beast,.matrix .m-do .beast{
+    background:url("assets/keypaw-cutout.webp") center/contain no-repeat
+  }
+  .cover .trio .t3 .beast,.closing .trio .t3 .beast,.gradient .c-decide .beast,.matrix .m-decide .beast{
+    background:url("assets/caseweaver-cutout.webp") center/contain no-repeat
+  }
+  .cover .trio .beast svg,.closing .trio .beast svg,.gradient .beast svg,.matrix .head .beast svg{visibility:hidden}
+
+  .scene-slide .main{position:relative;isolation:isolate}
+  .scene-slide .main::after{content:'';position:absolute;z-index:-1;top:4%;right:-2%;bottom:4%;width:min(46%,34rem);border-left:1px solid color-mix(in srgb,var(--accent),transparent 55%);background:linear-gradient(90deg,var(--scene-fade),transparent 48%),var(--scene) center/cover no-repeat;opacity:.78;filter:saturate(.78) contrast(1.05);mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 100%)}
+  .scene-slide .main>*{position:relative}
+  .scene-source-trail{--scene:url("assets/sourcehound-trail.webp");--scene-fade:rgba(239,229,207,1)}
+  .scene-source-journal{--scene:url("assets/sourcehound-journal.webp");--scene-fade:rgba(239,229,207,1)}
+  .scene-key-selection{--scene:url("assets/keypaw-selection.webp");--scene-fade:rgba(239,229,207,1)}
+  .scene-key-gateway{--scene:url("assets/keypaw-gateway.webp");--scene-fade:rgba(10,18,20,1)}
+  .scene-case-convergence{--scene:url("assets/caseweaver-convergence.webp");--scene-fade:rgba(239,229,207,1)}
+  .scene-case-review{--scene:url("assets/caseweaver-review.webp");--scene-fade:rgba(10,18,20,1)}
+
   /* ---------- responsive ---------- */
   @media (max-height:760px){
     :root{--pad:clamp(1rem,3.4vw,3rem)}
@@ -349,7 +377,10 @@
   }
   @media (max-width:900px){
     .slide{height:auto;min-height:100vh;min-height:100dvh;overflow:visible}
-    .specimen,.split,.protocol,.three,.gradient,.mustmay{grid-template-columns:1fr;gap:1.2rem}
+    .slide,.main,.specimen,.split,.protocol,.three,.gradient,.mustmay{min-width:0}
+    .specimen,.split,.protocol,.three,.gradient,.mustmay{grid-template-columns:minmax(0,1fr);gap:1.2rem}
+    .specimen{width:100%}
+    .plate-art.photo-plate{width:calc(100vw - var(--pad) - var(--pad));max-width:calc(100vw - var(--pad) - var(--pad))}
     .plate-art .beast{height:34vh}
     .matrix{grid-template-columns:1fr;font-size:.82rem}
     .matrix .row{margin-top:.8rem;color:var(--accent)}
@@ -357,6 +388,9 @@
     .topline span:last-child,.bottomline span:first-child{display:none}
     .frame{display:none}
     .code{font-size:.72rem}
+    .facts{display:grid;grid-template-columns:minmax(0,1fr);width:100%}
+    .facts span{min-width:0;max-width:100%;overflow-wrap:anywhere}
+    .scene-slide .main::after{display:none}
   }
   /* slide turn — a brief sweep of light across the page */
   .turn{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:0;background:linear-gradient(104deg,transparent 34%,rgba(242,201,126,.13) 50%,transparent 66%)}
@@ -908,7 +942,8 @@
     <section class="slide" data-slide="4" aria-label="Sourcehound specimen">
       <div class="topline"><span class="mark"><i class="dot"></i>Specimen I · Retrieval agent</span><span class="auth know"><i class="g"></i>Know</span></div>
       <div class="main specimen">
-        <div class="plate-art reveal">
+        <div class="plate-art photo-plate reveal">
+          <img class="plate-image" src="assets/sourcehound-plate.webp" alt="Sourcehound standing among fragments of policy and evidence on a dark field">
           <div class="beast-aura" aria-hidden="true"></div>
           <div class="beast beast--draw beast--breathe"><svg viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
 <title>Sourcehound — an alert quadruped tracking a trail of evidence fragments</title>
@@ -1007,7 +1042,7 @@
     </section>
 
     <!-- 06 · SOURCEHOUND INSTINCT ============================== -->
-    <section class="slide parchment" data-slide="5" aria-label="Sourcehound instinct">
+    <section class="slide parchment scene-slide scene-source-trail" data-slide="5" aria-label="Sourcehound instinct">
       <div class="topline"><span class="mark"><i class="dot"></i>Sourcehound · Instinct</span><span class="auth know"><i class="g"></i>Know</span></div>
       <div class="main">
         <p class="eyebrow reveal">Agency starts with the next step</p>
@@ -1089,7 +1124,7 @@ return index.search(
     </section>
 
     <!-- 09 · SOURCEHOUND HANDLING ============================== -->
-    <section class="slide parchment" data-slide="8" aria-label="Sourcehound handling protocol">
+    <section class="slide parchment scene-slide scene-source-journal" data-slide="8" aria-label="Sourcehound handling protocol">
       <div class="topline"><span class="mark"><i class="dot"></i>Sourcehound · Handling protocol</span><span class="auth know"><i class="g"></i>Know</span></div>
       <div class="main protocol">
         <div class="reveal">
@@ -1117,7 +1152,8 @@ return index.search(
     <section class="slide key" data-slide="9" aria-label="Keypaw specimen">
       <div class="topline"><span class="mark"><i class="dot"></i>Specimen II · Action agent</span><span class="auth do"><i class="g"></i>Do</span></div>
       <div class="main specimen">
-        <div class="plate-art reveal">
+        <div class="plate-art photo-plate reveal">
+          <img class="plate-image" src="assets/keypaw-plate.webp" alt="Keypaw standing with a key, telescope, and compass-like tools">
           <div class="beast-aura" aria-hidden="true"></div>
           <div class="beast beast--draw beast--breathe"><svg viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
 <title>Keypaw — an upright creature with four specialized instrument-bearing forelimbs and a banded collar</title>
@@ -1184,7 +1220,7 @@ return index.search(
     </section>
 
     <!-- 11 · TOOL AUTHORITY ==================================== -->
-    <section class="slide parchment key" data-slide="10" aria-label="Tools delegate authority">
+    <section class="slide parchment key scene-slide scene-key-selection" data-slide="10" aria-label="Tools delegate authority">
       <div class="topline"><span class="mark"><i class="dot"></i>Keypaw · Instinct</span><span class="auth do"><i class="g"></i>Do</span></div>
       <div class="main split">
         <div class="reveal">
@@ -1205,7 +1241,7 @@ return index.search(
     </section>
 
     <!-- 12 · KEYPAW HABITAT ==================================== -->
-    <section class="slide key" data-slide="11" aria-label="Keypaw habitat">
+    <section class="slide key scene-slide scene-key-gateway" data-slide="11" aria-label="Keypaw habitat">
       <div class="topline"><span class="mark"><i class="dot"></i>Keypaw · Habitat</span><span class="auth do"><i class="g"></i>Do</span></div>
       <div class="main">
         <p class="eyebrow reveal">Proposal is not execution</p>
@@ -1316,7 +1352,8 @@ execute_banking_operation(
     <section class="slide case" data-slide="15" aria-label="Caseweaver specimen">
       <div class="topline"><span class="mark"><i class="dot"></i>Specimen III · Decision workflow</span><span class="auth decide"><i class="g"></i>Decide</span></div>
       <div class="main specimen">
-        <div class="plate-art reveal">
+        <div class="plate-art photo-plate reveal">
+          <img class="plate-image" src="assets/caseweaver-plate.webp" alt="Caseweaver surrounded by evidence fragments connected with purple threads">
           <div class="beast-aura" aria-hidden="true"></div>
           <div class="beast beast--draw beast--breathe"><svg viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round">
 <title>Caseweaver — a broad shelled creature with several sensory organs drawing evidence threads into a pattern</title>
@@ -1422,7 +1459,7 @@ execute_banking_operation(
     </section>
 
     <!-- 17 · BASELINE ========================================== -->
-    <section class="slide parchment case" data-slide="16" aria-label="Classification without a case">
+    <section class="slide parchment case scene-slide scene-case-convergence" data-slide="16" aria-label="Classification without a case">
       <div class="topline"><span class="mark"><i class="dot"></i>Caseweaver · Instinct</span><span class="auth decide"><i class="g"></i>Decide</span></div>
       <div class="main split">
         <div class="reveal">
@@ -1514,7 +1551,7 @@ graph.add_edge(START, "triage")
     </section>
 
     <!-- 20 · CASEWEAVER HANDLING =============================== -->
-    <section class="slide case" data-slide="19" aria-label="Caseweaver handling protocol">
+    <section class="slide case scene-slide scene-case-review" data-slide="19" aria-label="Caseweaver handling protocol">
       <div class="topline"><span class="mark"><i class="dot"></i>Caseweaver · Handling protocol</span><span class="auth decide"><i class="g"></i>Decide</span></div>
       <div class="main protocol">
         <div class="reveal">
