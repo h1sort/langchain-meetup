@@ -45,7 +45,8 @@
   h1,h2,h3,p,figure,blockquote{margin:0}
 
   /* ---------- deck shell ---------- */
-  .deck{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:none;scroll-behavior:smooth}
+  .deck{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:none;scroll-behavior:smooth;scrollbar-width:none}
+  .deck::-webkit-scrollbar{display:none}
   .progress{position:fixed;z-index:60;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,rgba(199,154,69,.15),var(--brass) 60%,var(--brass-lit));box-shadow:0 0 12px rgba(239,205,138,.55);transition:width .35s var(--ease)}
   .progress::after{content:'';position:absolute;right:-3px;top:-2px;width:6px;height:6px;border-radius:50%;background:var(--brass-lit);box-shadow:0 0 10px 2px rgba(242,201,126,.8)}
 
@@ -379,8 +380,9 @@
     .slide{height:auto;min-height:100vh;min-height:100dvh;overflow:visible}
     .slide,.main,.specimen,.split,.protocol,.three,.gradient,.mustmay{min-width:0}
     .specimen,.split,.protocol,.three,.gradient,.mustmay{grid-template-columns:minmax(0,1fr);gap:1.2rem}
-    .specimen{width:100%}
-    .plate-art.photo-plate{width:calc(100vw - var(--pad) - var(--pad));max-width:calc(100vw - var(--pad) - var(--pad))}
+    .specimen{display:block;width:calc(100vw - 2.6rem);max-width:100%}
+    .specimen > .reveal:last-child{margin-top:1.2rem}
+    .plate-art.photo-plate{width:100%;max-width:100%}
     .plate-art .beast{height:34vh}
     .matrix{grid-template-columns:1fr;font-size:.82rem}
     .matrix .row{margin-top:.8rem;color:var(--accent)}
@@ -432,7 +434,7 @@
       </div>
       <div class="scrim" aria-hidden="true"></div>
       <div class="flash" aria-hidden="true"></div>
-      <div class="topline"><span class="mark"><i class="dot"></i>Field guide · Edition one</span><span>30 min · synthetic examples</span></div>
+      <div class="topline"><span class="mark"><i class="dot"></i>Field guide · Edition one</span><span>30 min · Based on real usecases.</span></div>
       <div class="main">
         <div class="cover-crest reveal d1"><span class="bar"></span><span>Magizoology of production systems</span><span class="bar r"></span></div>
         <h1 class="cover-title" id="coverTitle"><span class="ln">Fantastic Agents</span><span class="ln gold">and Where to Find Them</span></h1>
@@ -665,7 +667,7 @@
 </svg></div><figcaption>Decide</figcaption></figure>
         </div>
       </div>
-      <div class="bottomline"><span>All names, systems &amp; incidents are fictional composites</span><span class="folio">01 · 23</span></div>
+      <div class="bottomline"><span>All names of systems have been modified for public display.</span><span class="folio">01 · 23</span></div>
     </section>
 
     <!-- 02 · CONSEQUENCE ======================================= -->
@@ -673,7 +675,7 @@
       <div class="topline"><span class="mark"><i class="dot"></i>Premise</span><span>Authority changes the system</span></div>
       <div class="main">
         <p class="eyebrow reveal">One model · three consequences</p>
-        <h2 class="reveal">The hard part is not the brain.</h2>
+        <h2 class="reveal wide">The hard part is not the brain.</h2>
         <div class="three reveal">
           <article class="card c-know"><b>Know</b><p>“What is our parental leave policy?”</p><small>Failure: wrong answer</small></article>
           <article class="card c-do"><b>Do</b><p>“My card is missing. Can you freeze it?”</p><small>Failure: wrong action</small></article>
