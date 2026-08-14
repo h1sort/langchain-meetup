@@ -195,3 +195,6 @@ Thumbs.db
 desktop.ini
 *.png
 *.webp
+!assets/sourcehound-*.webp
+!assets/keypaw-*.webp
+!assets/caseweaver-*.webp
